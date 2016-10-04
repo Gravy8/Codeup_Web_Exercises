@@ -1,0 +1,46 @@
+.box {
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    color: white;
+    padding: 10px;
+    margin-right: 50px;
+    float: left;
+    margin-bottom: 50px;
+}
+#red {
+    background-color: red;
+}
+#orange {
+    background-color: orange;
+}
+#yellow {
+    background-color: yellow;
+}
+#green {
+    background-color: green;
+    /*clear: left;*/
+}
+#blue {
+    background-color: blue;
+}
+#violet {
+    background-color: violet;
+}
+h1 {
+    margin-bottom: 50px;
+}
+.arrow {
+    position: relative;
+    bottom: 85px;
+    left: 45px;
+}
+#ribbon {
+    float: right
+}
+.box:nth-child(4) {
+    clear: left;
+}
+body {
+    background-image: url="../img/dickbutt.jpeg";
+}

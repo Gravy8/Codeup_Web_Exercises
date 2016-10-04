@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My First HTML Form</title>
+</head>
+<body>
+    <h2>User Login</h2>
+    <form method="POST" action="http://requestb.in/w71ko9w7">
+        <p>
+            <label for="username">Username</label>
+            <input id="username" name="username"  type="text" placeholder="Username" autofocus required>
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" required>
+        </p>
+        <p>
+            <label for="extra">Extra Input</label>
+            <input id="extra" name="extra" type="text" value="This field is extra.">
+        </p>
+        <p>
+            <input type="submit">
+        </p>
+    </form>
+    <h2>Compose an Email</h2>
+    <form method="POST" action="http://requestb.in/w71ko9w7">
+        <p>
+            <label for="to">To:</label>
+            <input id="to" name="to" type="text" required placeholder="To">
+        </p>
+        <p>
+            <label for="from">From:</label>
+            <input id="from" name="from" type="text" required placeholder="From">
+        </p>
+        <p>
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Subject">
+        </p>
+        <p>
+            <label for="body">Body</label>
+            <textarea id="body" name="body" placeholder="Type your Email Here"></textarea>
+        </p>
+        <label for="save_to_sent"><input type="checkbox" id="save_to_sent" name="save_to_sent" value="yes" checked>Save a copy to your sent folder?</label>
+        <p>
+            <button type="submit">Send</button>
+        </p>
+    </form>
+    <h2>Multiple Choice Test</h2>
+    <form method="POST" action="http://requestb.in/w71ko9w7">
+        <p>What city are we in?</p>
+            <label for="san_antonio"><input id="san_antonio" name="q1" value="san_antonio" type="radio" checked>San Antonio</label>
+            <label for="austin"><input id="austin" name="q1" value="austin" type="radio">Austin</label>
+            <label for="san_marcos"><input id="san_marcos" name="q1" value="san_marcos" type="radio">San Marcos</label>
+        <p>What is this class called?</p>
+            <label for="highschool"><input id="highschool" name="q2" value="highschool" type="radio">High School</label>
+            <label for="codeup"><input id="codeup" name="q2" value="codeup" type="radio" checked>CodeUp</label>
+            <label for="ittTech"><input id="ittTech" name="q2" value="ittTech" type="radio">ITT Tech</label>
+        <p>What kinds of food are tasty?</p>
+            <label for="sweet"><input id="sweet" name="foods[]" value="sweet" type="checkbox" checked>Sweet</label>
+            <label for="salty"><input id="salty" name="foods[]" value="salty" type="checkbox" checked>Salty</label>
+            <label for="bitter"><input id="bitter" name="foods[]" value="bitter" type="checkbox">Bitter</label>
+            <br>
+            <label for="movie?">Which movies are made by quentin Tarantino?</label>
+            <select id="movie?" name="movie[]" multiple>
+                <option value="0" selected>Pulp Fiction</option>
+                <option value="1" selected>Resevoir Dogs</option>
+                <option value="2">The Life of Luis</option>
+            </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Select Testing</h2>
+    <form method="POST" action="http://requestb.in/w71ko9w7">
+        <label for="pie?">Do you like pie?</label>
+        <select id="pie?" name="pie?">
+            <option value="1">Yes</option>
+            <option value="0" selected>No</option>
+        </select>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

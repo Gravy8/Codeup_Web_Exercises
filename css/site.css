@@ -1,0 +1,82 @@
+body {
+    background-image: url("../img/hello-background.png");
+    font-family: Helvetica;
+}
+.header {
+    text-align: center;
+}
+h1 {
+    color: blueviolet;
+    text-decoration: underline;
+}
+h2 {
+    color: chocolate;
+    text-decoration: underline;
+}
+#quote {
+    color: blue;
+}
+#franco {
+    float: left;
+}
+#learning li {
+    list-style: square;
+    list-style-position: inside;
+}
+#favSites li {
+    list-style: circle;
+    list-style-position: inside;
+}
+th {
+    font-size: 2em;
+    padding: 15px;
+}
+table {
+    background-color: tan;
+    color: mediumblue;
+    padding: 25px;
+    border: 15px solid black;
+    font-family: fantasy;
+    position: relative;
+    right: 35px;
+}
+td {
+    padding: 3px;
+}
+a:active {
+    color: blueviolet;
+}
+a:visited {
+    color: red;
+}
+a:link {
+    color: hotpink;
+}
+a:hover {
+    color: yellow;
+}
+div {
+    margin: auto;
+}
+#container {
+    margin: 50px auto;
+    width: 500px;
+    /*border: 1px solid black;*/
+}
+.content {
+    /*border: 1px solid black;*/
+    text-align: center;
+}
+#bottom{
+    float: left;
+    position: relative;
+    left: 190px;
+}
+#porsche:hover {
+    content: url("../img/dickbutt.jpeg");
+}
+li {
+    list-style-position: inside;
+    position: relative;
+    right: 28px;
+}
