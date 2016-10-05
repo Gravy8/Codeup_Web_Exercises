@@ -8,8 +8,10 @@
 <body>
 <main class="container">
 
-    <form method="POST" action="http://requestb.in/16i43ds1" class="col-sm-6 col-sm-offset-3 form-horizontal"> <!-- NEEDS METHOD AND ACTION -->
+    <h1 class="text-center">Create your own Pizza</h1>
 
+    <form method="POST" action="http://requestb.in/rehe44re" class="col-sm-6 col-sm-offset-3 form-horizontal"> <!-- NEEDS METHOD AND ACTION -->
+        <!-- Pizza Size -->
         <div class="form-group">
             <label for="pizzaSize">What Size Pizza</label>
             <select name="pizzaSize" id="pizzaSize" class="form-control">
@@ -18,7 +20,7 @@
                 <option value="small">Small</option>
             </select>
         </div>
-
+        <!-- Crust type and bake -->
         <div class="form-group">
             <label for="crustType">Select Your Crust</label>
             <select name="crustType" id="crustType" class="form-control">
@@ -46,7 +48,7 @@
             </div>
         </div>
 
-
+        <!-- sauce type and amount -->
         <div class="form-group">
             <label for="sauceType">Select Your Sauce</label>
             <select id="sauceType" name="sauceType" class="form-control">
@@ -73,7 +75,7 @@
                 </label>
             </div>
         </div>
-
+        <!-- cheese and amount -->
         <div class="form-group">
             <label for="cheese">Cheese or No Cheese</label>
             <select id="cheese" name="cheese" class="form-control">
@@ -99,176 +101,308 @@
                 </label>
             </div>
         </div>
-
+        <!-- Toppings -->
         <div class="form-group">
-
+            <!-- Left toppings -->
             <div class="col-sm-6">
-
+                <!-- Pepperoni label -->
                 <div class="form-group">
-                    <label>Pepperoni</label>
+                    <label class="col-sm-12">Pepperoni</label>
                 </div>
+                    <!-- Pepperoni Select -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="top1-1">
+                                <input type="radio" id="top1-1" name="top1" value="1-1" checked>
+                                None
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top1-2">
+                                <input type="radio" id="top1-2" name="top1" value="1-2">
+                                Regular
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top1-3">
+                                <input type="radio" id="top1-3" name="top1" value="1-3">
+                                Extra
+                            </label>
+                        </div>
 
-                    <div class="radio-inline">
-                        <label for="top1-1">
-                            <input type="radio" id="top1-1" name="top1" value="1-1" checked>
-                            None
-                        </label>
                     </div>
-                    <div class="radio-inline">
-                        <label for="top1-2">
-                            <input type="radio" id="top1-2" name="top1" value="1-2">
-                            Regular
-                        </label>
-                    </div>
-                    <div class="radio-inline">
-                        <label for="top1-3">
-                            <input type="radio" id="top1-3" name="top1" value="1-3">
-                            Extra
-                        </label>
+                    <!-- Pepperoni Amount -->
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="pepWhole">
+                                <input id="pepWhole" name="pep" type="radio" value="whole">
+                                Whole
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="pepHalf1">
+                                <input id="pepHalf1" name="pep" type="radio" value="half1">
+                                Half 1
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="pepHalf2">
+                                <input id="pepHalf2" name="pep" type="radio" value="half2">
+                                Half 2
+                            </label>
+                        </div>
                     </div>
 
-                </div>
-
+                <!-- Sausage label -->
                 <div class="form-group">
                     <label>Sausage</label>
                 </div>
+                    <!-- Sausage select -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="top2-1">
+                                <input type="radio" id="top2-1" name="top2" value="2-1" checked>
+                                None
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top2-2">
+                                <input type="radio" id="top2-2" name="top2" value="2-2">
+                                Regular
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top2-3">
+                                <input type="radio" id="top2-3" name="top2" value="2-3">
+                                Extra
+                            </label>
+                        </div>
 
-                    <div class="radio-inline">
-                        <label for="top2-1">
-                            <input type="radio" id="top2-1" name="top2" value="2-1" checked>
-                            None
-                        </label>
                     </div>
-                    <div class="radio-inline">
-                        <label for="top2-2">
-                            <input type="radio" id="top2-2" name="top2" value="2-2">
-                            Regular
-                        </label>
-                    </div>
-                    <div class="radio-inline">
-                        <label for="top2-3">
-                            <input type="radio" id="top2-3" name="top2" value="2-3">
-                            Extra
-                        </label>
+                    <!-- Sausage amount -->
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="sausWhole">
+                                <input id="sausWhole" name="saus" type="radio" value="whole">
+                                Whole
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="sausHalf1">
+                                <input id="sausHalf1" name="saus" type="radio" value="half1">
+                                Half 1
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="sausHalf2">
+                                <input id="sausHalf2" name="saus" type="radio" value="half2">
+                                Half 2
+                            </label>
+                        </div>
                     </div>
 
-                </div>
-
+                <!-- bacon label -->
                 <div class="form-group">
                     <label>Bacon</label>
                 </div>
+                    <!-- bacon select -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="top3-1">
+                                <input type="radio" id="top3-1" name="top3" value="3-1" checked>
+                                None
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top3-2">
+                                <input type="radio" id="top3-2" name="top3" value="3-2">
+                                Regular
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top3-3">
+                                <input type="radio" id="top3-3" name="top3" value="3-3">
+                                Extra
+                            </label>
+                        </div>
 
-                    <div class="radio-inline">
-                        <label for="top3-1">
-                            <input type="radio" id="top3-1" name="top3" value="3-1" checked>
-                            None
-                        </label>
                     </div>
-                    <div class="radio-inline">
-                        <label for="top3-2">
-                            <input type="radio" id="top3-2" name="top3" value="3-2">
-                            Regular
-                        </label>
-                    </div>
-                    <div class="radio-inline">
-                        <label for="top3-3">
-                            <input type="radio" id="top3-3" name="top3" value="3-3">
-                            Extra
-                        </label>
+                    <!-- bacon amount -->
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="bacWhole">
+                                <input id="bacWhole" name="bac" type="radio" value="whole">
+                                Whole
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="bacHalf1">
+                                <input id="bacHalf1" name="bac" type="radio" value="half1">
+                                Half 1
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="bacHalf2">
+                                <input id="bacHalf2" name="bac" type="radio" value="half2">
+                                Half 2
+                            </label>
+                        </div>
                     </div>
 
-                </div>
 
             </div>
-
+            <!-- Right toppings -->
             <div class="col-sm-6">
-
+                <!-- onion label -->
                 <div class="form-group">
                     <label>Onion</label>
                 </div>
+                    <!-- onion select -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="top4-1">
+                                <input type="radio" id="top4-1" name="top4" value="4-1" checked>
+                                None
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top4-2">
+                                <input type="radio" id="top4-2" name="top4" value="4-2">
+                                Regular
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top4-3">
+                                <input type="radio" id="top4-3" name="top4" value="4-3">
+                                Extra
+                            </label>
+                        </div>
 
-                    <div class="radio-inline">
-                        <label for="top4-1">
-                            <input type="radio" id="top4-1" name="top4" value="4-1" checked>
-                            None
-                        </label>
                     </div>
-                    <div class="radio-inline">
-                        <label for="top4-2">
-                            <input type="radio" id="top4-2" name="top4" value="4-2">
-                            Regular
-                        </label>
-                    </div>
-                    <div class="radio-inline">
-                        <label for="top4-3">
-                            <input type="radio" id="top4-3" name="top4" value="4-3">
-                            Extra
-                        </label>
+                    <!-- onion amount -->
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="oniWhole">
+                                <input id="oniWhole" name="oni" type="radio" value="whole">
+                                Whole
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="oniHalf1">
+                                <input id="oniHalf1" name="oni" type="radio" value="half1">
+                                Half 1
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="oniHalf2">
+                                <input id="oniHalf2" name="oni" type="radio" value="half2">
+                                Half 2
+                            </label>
+                        </div>
                     </div>
 
-                </div>
-
+                <!-- mushroom label -->
                 <div class="form-group">
                     <label>Mushrooms</label>
                 </div>
+                    <!-- mushroom select -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="top5-1">
+                                <input type="radio" id="top5-1" name="top5" value="5-1" checked>
+                                None
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top5-2">
+                                <input type="radio" id="top5-2" name="top5" value="5-2">
+                                Regular
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top5-3">
+                                <input type="radio" id="top5-3" name="top5" value="5-3">
+                                Extra
+                            </label>
+                        </div>
 
-                    <div class="radio-inline">
-                        <label for="top5-1">
-                            <input type="radio" id="top5-1" name="top5" value="5-1" checked>
-                            None
-                        </label>
                     </div>
-                    <div class="radio-inline">
-                        <label for="top5-2">
-                            <input type="radio" id="top5-2" name="top5" value="5-2">
-                            Regular
-                        </label>
-                    </div>
-                    <div class="radio-inline">
-                        <label for="top5-3">
-                            <input type="radio" id="top5-3" name="top5" value="5-3">
-                            Extra
-                        </label>
+                    <!-- mushroom amount -->
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="mushWhole">
+                                <input id="mushWhole" name="mush" type="radio" value="whole">
+                                Whole
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="mushHalf1">
+                                <input id="mushHalf1" name="mush" type="radio" value="half1">
+                                Half 1
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="mushHalf2">
+                                <input id="mushHalf2" name="mush" type="radio" value="half2">
+                                Half 2
+                            </label>
+                        </div>
                     </div>
 
-                </div>
-
+                <!-- green pepper label -->
                 <div class="form-group">
                     <label>Green Peppers</label>
                 </div>
+                    <!-- green pepper select -->
+                    <div class="form-group">
 
-                <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="top6-1">
+                                <input type="radio" id="top6-1" name="top6" value="6-1" checked>
+                                None
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top6-2">
+                                <input type="radio" id="top6-2" name="top6" value="6-2">
+                                Regular
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="top6-3">
+                                <input type="radio" id="top6-3" name="top6" value="6-3">
+                                Extra
+                            </label>
+                        </div>
 
-                    <div class="radio-inline">
-                        <label for="top6-1">
-                            <input type="radio" id="top6-1" name="top6" value="6-1" checked>
-                            None
-                        </label>
                     </div>
-                    <div class="radio-inline">
-                        <label for="top6-2">
-                            <input type="radio" id="top6-2" name="top6" value="6-2">
-                            Regular
-                        </label>
-                    </div>
-                    <div class="radio-inline">
-                        <label for="top6-3">
-                            <input type="radio" id="top6-3" name="top6" value="6-3">
-                            Extra
-                        </label>
+                    <!-- green pepper amount -->
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label for="grnWhole">
+                                <input id="grnWhole" name="grn" type="radio" value="whole">
+                                Whole
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="grnHalf1">
+                                <input id="grnHalf1" name="grn" type="radio" value="half1">
+                                Half 1
+                            </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label for="grnHalf2">
+                                <input id="grnHalf2" name="grn" type="radio" value="half2">
+                                Half 2
+                            </label>
+                        </div>
                     </div>
 
-                </div>
 
             </div>
 
