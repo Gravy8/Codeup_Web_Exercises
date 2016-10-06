@@ -1,0 +1,28 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Trebuchet MS',verdana, sans-serif;"
+}
+.container {
+    width: 70%;
+    margin: 15px auto;
+}
+.left_column {
+    height: 800px;
+    width: 20%;
+    background: #999f8e;
+    float: left;
+}
+.right_column {
+    background: #d2d8c7;
+    height: 800px;
+    width: 78%;
+    float: left;
+    padding-left: 2%;
+}
+ul {
+    list-style: none;
+}
+li {
+    padding-bottom: 5px;
+}
