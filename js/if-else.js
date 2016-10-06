@@ -26,7 +26,7 @@ var coinFlip = Math.floor(Math.random()* 2);
 
 
 if ((classOneGrade + classTwoGrade + classThreeGrade) / 3 > 80) {
-    console.log("Your'e Awesome")
+    console.log("You're Awesome")
 } else {
     console.log("You need to Practice More")
 }
