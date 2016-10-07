@@ -1,6 +1,6 @@
 var luckyNumber = Math.floor(Math.random()* 6);
 var cost = 60;
-var endCost = 60
+var endCost = cost;
 
 var monthNumber = Math.floor(Math.random()* 12) +1;
 var month = "January";
