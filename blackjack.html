@@ -21,6 +21,18 @@
     var userTotal;
     var userBust;
 
+    var dealerCardOne;
+    var dealerCardOneResult;
+    var dealerCardOneValue;
+    var dealerCardTwo;
+    var dealerCardTwoResult;
+    var dealerCardTwoValue;
+    var dealerNextCard;
+    var dealerNextCardResult;
+    var dealerNextCardValue;
+
+    var dealerTotal;
+    var dealerBust;
 
     /*var ace = 11;
     var jack = 10;
@@ -248,7 +260,7 @@
     }
 
 
-    function getStartingCards() {
+    function getStartingCardsUser() {
         while (true) {
             cardOne = Math.floor(Math.random() * 52) + 1;
             if ($.inArray(cardOne, cardsPulled) == -1) {
@@ -267,7 +279,26 @@
         }
     }
 
-    function drawACard() {
+    function getStartingCardsDealer() {
+        while (true) {
+            dealerCardOne = Math.floor(Math.random() * 52) + 1;
+            if ($.inArray(dealerCardOne, cardsPulled) == -1) {
+                cardsPulled.push(dealerCardOne);
+                dealerCardOneResult = assignCards(dealerCardOne);
+                break;
+            }
+        }
+        while (true) {
+            dealerCardTwo = Math.floor(Math.random() * 52) + 1;
+            if ($.inArray(dealerCardTwo, cardsPulled) == -1) {
+                cardsPulled.push(dealerCardTwo);
+                dealerCardTwoResult = assignCards(dealerCardTwo);
+                break;
+            }
+        }
+    }
+
+    function drawACardUser() {
         while (true) {
             nextCard = Math.floor(Math.random() * 52) + 1;
             if ($.inArray(nextCard, cardsPulled) == -1) {
@@ -278,9 +309,21 @@
         }
     }
 
+    function drawACardDealer() {
+        while (true) {
+            dealerNextCard = Math.floor(Math.random() * 52) + 1;
+            if ($.inArray(dealerNextCard, cardsPulled) == -1) {
+                cardsPulled.push(dealerNextCard);
+                dealerNextCardResult = assignCards(dealerNextCard);
+                break;
+            }
+        }
+    }
+
 
     function playBlackJack() {
-        getStartingCards();
+        getStartingCardsUser();
+        getStartingCardsDealer();
 
         if (typeof(cardOneResult) == "string") {
             if (cardOneResult == "ace") {
@@ -301,16 +344,50 @@
             cardTwoValue = cardTwoResult;
         }
 
-        userTotal = cardOneValue + cardTwoValue;
-
-        if (userTotal == 21) {
-            alert("You got Black Jack! You Win!");
-            return;
+        if (typeof(dealerCardOneResult) == "string") {
+            if (dealerCardOneResult == "ace") {
+                dealerCardOneValue = 11;
+            } else {
+                dealerCardOneValue = 10;
+            }
+        } else {
+            dealerCardOneValue = dealerCardOneResult;
+        }
+        if (typeof(dealerCardTwoResult) == "string") {
+            if (dealerCardTwoResult == "ace") {
+                dealerCardTwoValue = 11;
+            } else {
+                dealerCardTwoValue = 10;
+            }
+        } else {
+            dealerCardTwoValue = dealerCardTwoResult;
         }
 
-        if (confirm("Your cards are " + cardOneResult + " and " + cardTwoResult + ". Your total is currently " + userTotal + ". Would you like to hit?")) {
+        userTotal = cardOneValue + cardTwoValue;
+        dealerTotal = dealerCardOneValue + dealerCardTwoValue;
+
+        if (userTotal == 21) {
+            if (dealerTotal == 21) {
+                alert("Wow! You guys both got Black Jack! What are the odds?");
+                cardsPulled = [];
+                playBlackJack()
+            } else {
+                alert("You got Black Jack! You Win!");
+                cardsPulled = [];
+                playBlackJack()
+            }
+        }
+        if (dealerTotal == 21) {
+            alert("Dealer got Black Jack. You Lose!");
+            cardsPulled = [];
+            playBlackJack()
+        }
+
+        if (confirm("Your cards are " + cardOneResult + " and " + cardTwoResult + ". Your total is currently "
+                        + userTotal + ". The dealers' cards are " + dealerCardOneResult + " and " + dealerCardTwoResult
+                        + ". Dealer total is currently " + dealerTotal + ". Would you like to hit?")) {
             while (userTotal <= 21) {
-                drawACard();
+                drawACardUser();
                 if (typeof(nextCardResult) == "string") {
                     if (nextCardResult == "ace") {
                         nextCardValue = 11;
@@ -331,12 +408,61 @@
                     if (userTotal == 21) {
                         alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
                         break;
-                    } else if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". Would you like to hit?")) {
+                    } else if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". The dealers' total is "
+                                    + dealerTotal + ". Would you like to hit?")) {
                     } else {
                         break;
                     }
                 }
             }
+        }
+        if (userBust == "busted") {
+        } else {
+            while (dealerTotal < 17) {
+                drawACardDealer();
+                if (typeof(dealerNextCardResult) == "string") {
+                    if (dealerNextCardResult == "ace") {
+                        dealerNextCardValue = 11;
+                    } else {
+                        dealerNextCardValue = 10;
+                    }
+                } else {
+                    dealerNextCardValue = dealerNextCardResult;
+                }
+                dealerTotal += dealerNextCardValue;
+
+                if (dealerTotal > 21) {
+                    alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ". Dealer Busts!");
+                    dealerBust= "busted";
+                    break;
+                }else if (dealerTotal == 21) {
+                    if (userTotal == 21) {
+                        alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ". It's a tie!");
+                        break;
+                    } else {
+                        alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ". You Lose!");
+                        break;
+                    }
+                } else {
+                    alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ".");
+                }
+            }
+            if (dealerBust == "busted") {
+            } else {
+                if (userTotal > dealerTotal) {
+                    alert("Your total is " + userTotal + ". The dealers' total is " + dealerTotal + ". You Win!");
+                } else if (userTotal == dealerTotal) {
+                    alert("Your total is " + userTotal + ". The dealers' total is " + dealerTotal + ". It's a Tie!");
+                } else {
+                    alert("Your total is " + userTotal + ". The dealers; total is " + dealerTotal + ". You Lose!");
+                }
+            }
+        }
+        if (confirm("Do you want to play again?")) {
+            cardsPulled = [];
+            playBlackJack()
+        } else {
+            alert("Thanks for Playing!");
         }
     }
         playBlackJack();
