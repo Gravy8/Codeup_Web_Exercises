@@ -328,9 +328,10 @@
                     alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ". You Bust!");
                     break;
                 } else {
-                    if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". Would you like to hit?")) {
-                    } else if (userTotal == 21) {
+                    if (userTotal == 21) {
+                        alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
                         break;
+                    } else if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". Would you like to hit?")) {
                     } else {
                         break;
                     }
