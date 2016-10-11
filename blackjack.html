@@ -21,6 +21,9 @@
     var userTotal;
     var userBust;
 
+    var userAceCount = 0;
+    var userAceMath;
+
     var dealerCardOne;
     var dealerCardOneResult;
     var dealerCardOneValue;
@@ -33,6 +36,9 @@
 
     var dealerTotal;
     var dealerBust;
+
+    var dealerAceCount;
+    var dealerAceMath;
 
     var blackJack;
 
@@ -274,7 +280,12 @@
         }
         if (typeof(cardOneResult) == "string") {
             if (cardOneResult == "ace") {
-                cardOneValue = 11;
+                if (userAceCount == 0) {
+                    cardOneValue = 11;
+                } else {
+                    cardOneValue = 1;
+                }
+                userAceCount++;
             } else {
                 cardOneValue = 10;
             }
@@ -292,7 +303,12 @@
         }
         if (typeof(cardTwoResult) == "string") {
             if (cardTwoResult == "ace") {
-                cardTwoValue = 11;
+                if (userAceCount == 0) {
+                    cardTwoValue = 11;
+                } else {
+                    cardTwoValue = 1;
+                }
+                userAceCount++;
             } else {
                 cardTwoValue = 10;
             }
@@ -312,7 +328,12 @@
         }
         if (typeof(dealerCardOneResult) == "string") {
             if (dealerCardOneResult == "ace") {
-                dealerCardOneValue = 11;
+                if (dealerAceCount == 0) {
+                    dealerCardOneValue = 11;
+                } else {
+                    dealerCardOneValue = 1;
+                }
+                dealerAceCount++;
             } else {
                 dealerCardOneValue = 10;
             }
@@ -330,7 +351,12 @@
         }
         if (typeof(dealerCardTwoResult) == "string") {
             if (dealerCardTwoResult == "ace") {
-                dealerCardTwoValue = 11;
+                if (dealerAceCount == 0) {
+                    dealerCardTwoValue = 11;
+                } else {
+                    dealerCardTwoValue = 1;
+                }
+                dealerAceCount++;
             } else {
                 dealerCardTwoValue = 10;
             }
@@ -350,7 +376,12 @@
         }
         if (typeof(nextCardResult) == "string") {
             if (nextCardResult == "ace") {
-                nextCardValue = 11;
+                if (userAceCount == 0) {
+                    nextCardValue = 11;
+                } else {
+                    nextCardValue = 1;
+                }
+                userAceCount++;
             } else {
                 nextCardValue = 10;
             }
@@ -370,7 +401,12 @@
         }
         if (typeof(dealerNextCardResult) == "string") {
             if (dealerNextCardResult == "ace") {
-                dealerNextCardValue = 11;
+                if (dealerAceCount == 0) {
+                    dealerNextCardValue = 11;
+                } else {
+                    dealerNextCardValue = 1;
+                }
+                dealerAceCount++;
             } else {
                 dealerNextCardValue = 10;
             }
