@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlackJack</title>
+</head>
+<body>
+<script src="js/jquery.js"></script>
+<script>
+
+    var cardOne;
+    var cardOneResult;
+    var cardOneValue;
+    var cardTwo;
+    var cardTwoResult;
+    var cardTwoValue;
+    var nextCard;
+    var nextCardResult;
+    var nextCardValue;
+
+    var userTotal;
+    var userBust;
+
+
+    /*var ace = 11;
+    var jack = 10;
+    var queen = 10;
+    var king = 10;*/
+
+
+    var cardsPulled = [];
+
+
+    var one = "ace";
+    var two = "ace";
+    var three = "ace";
+    var four = "ace";
+    var five = 2;
+    var six = 2;
+    var eight = 2;
+    var seven = 2;
+    var ten = 3;
+    var eleven = 3;
+    var twelve = 3;
+    var thirteen = 3;
+    var fourteen = 4;
+    var fifteen = 4;
+    var sixteen = 4;
+    var seventeen = 4;
+    var eighteen = 5;
+    var nineteen = 5;
+    var twenty = 5;
+    var twentyOne = 5;
+    var twentyTwo = 6;
+    var twentyThree = 6;
+    var nine = 6;
+    var twentyFour = 6;
+    var twentyFive = 7;
+    var twentySix = 7;
+    var twentySeven = 7;
+    var twentyEight = 7;
+    var twentyNine = 8;
+    var thirty = 8;
+    var thirtyOne = 8;
+    var thirtyTwo = 8;
+    var thirtyThree = 9;
+    var thirtyFour = 9;
+    var thirtyFive = 9;
+    var thirtySix = 9;
+    var thirtySeven = 10;
+    var thirtyEight = 10;
+    var thirtyNine = 10;
+    var forty = 10;
+    var fortyOne = "jack";
+    var fortyTwo = "jack";
+    var fortyThree = "jack";
+    var fortyFour = "jack";
+    var fortyFive = "queen";
+    var fortySix = "queen";
+    var fortySeven = "queen";
+    var fortyEight = "queen";
+    var fortyNine = "king";
+    var fifty = "king";
+    var fiftyOne = "king";
+    var fiftyTwo = "king";
+
+
+    function assignCards(number) {
+        switch (number) {
+            case 1:
+                number = one;
+                break;
+            case 2:
+                number = two;
+                break;
+            case 3:
+                number = three;
+                break;
+            case 4:
+                number = four;
+                break;
+            case 5:
+                number = five;
+                break;
+            case 6:
+                number = six;
+                break;
+            case 7:
+                number = seven;
+                break;
+            case 8:
+                number = eight;
+                break;
+            case 9:
+                number = nine;
+                break;
+            case 10:
+                number = ten;
+                break;
+            case 11:
+                number = eleven;
+                break;
+            case 12:
+                number = twelve;
+                break;
+            case 13:
+                number = thirteen;
+                break;
+            case 14:
+                number = fourteen;
+                break;
+            case 15:
+                number = fifteen;
+                break;
+            case 16:
+                number = sixteen;
+                break;
+            case 17:
+                number = seventeen;
+                break;
+            case 18:
+                number = eighteen;
+                break;
+            case 19:
+                number = nineteen;
+                break;
+            case 20:
+                number = twenty;
+                break;
+            case 21:
+                number = twentyOne;
+                break;
+            case 22:
+                number = twentyTwo;
+                break;
+            case 23:
+                number = twentyThree;
+                break;
+            case 24:
+                number = twentyFour;
+                break;
+            case 25:
+                number = twentyFive;
+                break;
+            case 26:
+                number = twentySix;
+                break;
+            case 27:
+                number = twentySeven;
+                break;
+            case 28:
+                number = twentyEight;
+                break;
+            case 29:
+                number = twentyNine;
+                break;
+            case 30:
+                number = thirty;
+                break;
+            case 31:
+                number = thirtyOne;
+                break;
+            case 32:
+                number = thirtyTwo;
+                break;
+            case 33:
+                number = thirtyThree;
+                break;
+            case 34:
+                number = thirtyFour;
+                break;
+            case 35:
+                number = thirtyFive;
+                break;
+            case 36:
+                number = thirtySix;
+                break;
+            case 37:
+                number = thirtySeven;
+                break;
+            case 38:
+                number = thirtyEight;
+                break;
+            case 39:
+                number = thirtyNine;
+                break;
+            case 40:
+                number = forty;
+                break;
+            case 41:
+                number = fortyOne;
+                break;
+            case 42:
+                number = fortyTwo;
+                break;
+            case 43:
+                number = fortyThree;
+                break;
+            case 44:
+                number = fortyFour;
+                break;
+            case 45:
+                number = fortyFive;
+                break;
+            case 46:
+                number = fortySix;
+                break;
+            case 47:
+                number = fortySeven;
+                break;
+            case 48:
+                number = fortyEight;
+                break;
+            case 49:
+                number = fortyNine;
+                break;
+            case 50:
+                number = fifty;
+                break;
+            case 51:
+                number = fiftyOne;
+                break;
+            case 52:
+                number = fiftyTwo;
+                break;
+        }
+        return number;
+    }
+
+
+    function getStartingCards() {
+        while (true) {
+            cardOne = Math.floor(Math.random() * 52) + 1;
+            if ($.inArray(cardOne, cardsPulled) == -1) {
+                cardsPulled.push(cardOne);
+                cardOneResult = assignCards(cardOne);
+                break;
+            }
+        }
+        while (true) {
+            cardTwo = Math.floor(Math.random() * 52) + 1;
+            if ($.inArray(cardTwo, cardsPulled) == -1) {
+                cardsPulled.push(cardTwo);
+                cardTwoResult = assignCards(cardTwo);
+                break;
+            }
+        }
+    }
+
+    function drawACard() {
+        while (true) {
+            nextCard = Math.floor(Math.random() * 52) + 1;
+            if ($.inArray(nextCard, cardsPulled) == -1) {
+                cardsPulled.push(nextCard);
+                nextCardResult = assignCards(nextCard);
+                break;
+            }
+        }
+    }
+
+
+    function playBlackJack() {
+        getStartingCards();
+
+        if (typeof(cardOneResult) == "string") {
+            if (cardOneResult == "ace") {
+                cardOneValue = 11;
+            } else {
+                cardOneValue = 10;
+            }
+        } else {
+            cardOneValue = cardOneResult;
+        }
+        if (typeof(cardTwoResult) == "string") {
+            if (cardTwoResult == "ace") {
+                cardTwoValue = 11;
+            } else {
+                cardTwoValue = 10;
+            }
+        } else {
+            cardTwoValue = cardTwoResult;
+        }
+
+        userTotal = cardOneValue + cardTwoValue;
+
+        if (userTotal == 21) {
+            alert("You got Black Jack! You Win!");
+            return;
+        }
+
+        if (confirm("Your cards are " + cardOneResult + " and " + cardTwoResult + ". Your total is currently " + userTotal + ". Would you like to hit?")) {
+            while (userTotal <= 21) {
+                drawACard();
+                if (typeof(nextCardResult) == "string") {
+                    if (nextCardResult == "ace") {
+                        nextCardValue = 11;
+                    } else {
+                        nextCardValue = 10;
+                    }
+                } else {
+                    nextCardValue = nextCardResult;
+                }
+
+                userTotal += nextCardValue;
+
+                if (userTotal > 21) {
+                    userBust = "busted";
+                    alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ". You Bust!");
+                    break;
+                } else {
+                    if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". Would you like to hit?")) {
+                    } else if (userTotal == 21) {
+                        break;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+        playBlackJack();
+</script>
+</body>
+</html>
