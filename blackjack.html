@@ -345,6 +345,15 @@
                 break;
             }
         }
+        if (typeof(nextCardResult) == "string") {
+            if (nextCardResult == "ace") {
+                nextCardValue = 11;
+            } else {
+                nextCardValue = 10;
+            }
+        } else {
+            nextCardValue = nextCardResult;
+        }
     }
 
     function drawACardDealer() {
@@ -355,6 +364,15 @@
                 dealerNextCardResult = assignCards(dealerNextCard);
                 break;
             }
+        }
+        if (typeof(dealerNextCardResult) == "string") {
+            if (dealerNextCardResult == "ace") {
+                dealerNextCardValue = 11;
+            } else {
+                dealerNextCardValue = 10;
+            }
+        } else {
+            dealerNextCardValue = dealerNextCardResult;
         }
     }
 
@@ -389,15 +407,6 @@
                         + ". Dealer total is currently " + dealerTotal + ". Would you like to hit?")) {
             while (userTotal <= 21) {
                 drawACardUser();
-                if (typeof(nextCardResult) == "string") {
-                    if (nextCardResult == "ace") {
-                        nextCardValue = 11;
-                    } else {
-                        nextCardValue = 10;
-                    }
-                } else {
-                    nextCardValue = nextCardResult;
-                }
 
                 userTotal += nextCardValue;
 
@@ -422,15 +431,7 @@
         } else {
             while (dealerTotal < 17) {
                 drawACardDealer();
-                if (typeof(dealerNextCardResult) == "string") {
-                    if (dealerNextCardResult == "ace") {
-                        dealerNextCardValue = 11;
-                    } else {
-                        dealerNextCardValue = 10;
-                    }
-                } else {
-                    dealerNextCardValue = dealerNextCardResult;
-                }
+
                 dealerTotal += dealerNextCardValue;
 
                 if (dealerTotal > 21) {
