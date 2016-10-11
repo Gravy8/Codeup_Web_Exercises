@@ -269,6 +269,16 @@
                 break;
             }
         }
+        if (typeof(cardOneResult) == "string") {
+            if (cardOneResult == "ace") {
+                cardOneValue = 11;
+            } else {
+                cardOneValue = 10;
+            }
+        } else {
+            cardOneValue = cardOneResult;
+        }
+
         while (true) {
             cardTwo = Math.floor(Math.random() * 52) + 1;
             if ($.inArray(cardTwo, cardsPulled) == -1) {
@@ -276,6 +286,15 @@
                 cardTwoResult = assignCards(cardTwo);
                 break;
             }
+        }
+        if (typeof(cardTwoResult) == "string") {
+            if (cardTwoResult == "ace") {
+                cardTwoValue = 11;
+            } else {
+                cardTwoValue = 10;
+            }
+        } else {
+            cardTwoValue = cardTwoResult;
         }
     }
 
@@ -288,6 +307,16 @@
                 break;
             }
         }
+        if (typeof(dealerCardOneResult) == "string") {
+            if (dealerCardOneResult == "ace") {
+                dealerCardOneValue = 11;
+            } else {
+                dealerCardOneValue = 10;
+            }
+        } else {
+            dealerCardOneValue = dealerCardOneResult;
+        }
+
         while (true) {
             dealerCardTwo = Math.floor(Math.random() * 52) + 1;
             if ($.inArray(dealerCardTwo, cardsPulled) == -1) {
@@ -295,6 +324,15 @@
                 dealerCardTwoResult = assignCards(dealerCardTwo);
                 break;
             }
+        }
+        if (typeof(dealerCardTwoResult) == "string") {
+            if (dealerCardTwoResult == "ace") {
+                dealerCardTwoValue = 11;
+            } else {
+                dealerCardTwoValue = 10;
+            }
+        } else {
+            dealerCardTwoValue = dealerCardTwoResult;
         }
     }
 
@@ -325,43 +363,6 @@
         getStartingCardsUser();
         getStartingCardsDealer();
 
-        if (typeof(cardOneResult) == "string") {
-            if (cardOneResult == "ace") {
-                cardOneValue = 11;
-            } else {
-                cardOneValue = 10;
-            }
-        } else {
-            cardOneValue = cardOneResult;
-        }
-        if (typeof(cardTwoResult) == "string") {
-            if (cardTwoResult == "ace") {
-                cardTwoValue = 11;
-            } else {
-                cardTwoValue = 10;
-            }
-        } else {
-            cardTwoValue = cardTwoResult;
-        }
-
-        if (typeof(dealerCardOneResult) == "string") {
-            if (dealerCardOneResult == "ace") {
-                dealerCardOneValue = 11;
-            } else {
-                dealerCardOneValue = 10;
-            }
-        } else {
-            dealerCardOneValue = dealerCardOneResult;
-        }
-        if (typeof(dealerCardTwoResult) == "string") {
-            if (dealerCardTwoResult == "ace") {
-                dealerCardTwoValue = 11;
-            } else {
-                dealerCardTwoValue = 10;
-            }
-        } else {
-            dealerCardTwoValue = dealerCardTwoResult;
-        }
 
         userTotal = cardOneValue + cardTwoValue;
         dealerTotal = dealerCardOneValue + dealerCardTwoValue;
@@ -404,18 +405,19 @@
                     userBust = "busted";
                     alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ". You Bust!");
                     break;
-                } else {
-                    if (userTotal == 21) {
+                } else if (userTotal == 21) {
                         alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
                         break;
-                    } else if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". The dealers' total is "
+                } else if (confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". The dealers' total is "
                                     + dealerTotal + ". Would you like to hit?")) {
-                    } else {
-                        break;
-                    }
+                        continue;
+                } else {
+                        break;//WHAT IS THIS
                 }
             }
-        }
+        }//need an else to determine what happens if the user doesnt want to hit off of the draw
+
+
         if (userBust == "busted") {
         } else {
             while (dealerTotal < 17) {
