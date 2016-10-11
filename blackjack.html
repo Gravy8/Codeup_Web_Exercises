@@ -34,6 +34,7 @@
     var dealerTotal;
     var dealerBust;
 
+
     /*var ace = 11;
     var jack = 10;
     var queen = 10;
@@ -376,16 +377,52 @@
         }
     }
 
+    function checkForBlackJack() {
+        if (userTotal == 21) {
+            if (dealerTotal == 21) {
+                alert("Wow! You guys both got Black Jack! What are the odds?");
+                return true;
+            } else {
+                alert("You got Black Jack! You Win!");
+                return true;
+            }
+        } else if (dealerTotal == 21) {
+            alert("Dealer got Black Jack. You Lose!");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function endMessage() {
+        if (confirm("Do you want to play again?")) {
+            return true;
+        } else {
+            alert("Thanks for Playing!");
+            return false;
+        }
+    }
+
+
+
 
     function playBlackJack() {
         getStartingCardsUser();
         getStartingCardsDealer();
 
-
         userTotal = cardOneValue + cardTwoValue;
         dealerTotal = dealerCardOneValue + dealerCardTwoValue;
 
-        if (userTotal == 21) {
+        if (checkForBlackJack()) {
+            if (endMessage()) {
+                cardsPulled = [];
+                playBlackJack()
+            } else {
+                return;
+            }
+        }
+//MOVING TO CHECKFORBLACKJACK()
+        /*if (userTotal == 21) {
             if (dealerTotal == 21) {
                 alert("Wow! You guys both got Black Jack! What are the odds?");
                 cardsPulled = [];
@@ -400,7 +437,7 @@
             alert("Dealer got Black Jack. You Lose!");
             cardsPulled = [];
             playBlackJack()
-        }
+        }*/
 
         if (confirm("Your cards are " + cardOneResult + " and " + cardTwoResult + ". Your total is currently "
                         + userTotal + ". The dealers' cards are " + dealerCardOneResult + " and " + dealerCardTwoResult
@@ -461,11 +498,9 @@
                 }
             }
         }
-        if (confirm("Do you want to play again?")) {
+        if (endMessage()) {
             cardsPulled = [];
             playBlackJack()
-        } else {
-            alert("Thanks for Playing!");
         }
     }
         playBlackJack();
