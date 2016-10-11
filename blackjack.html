@@ -22,7 +22,7 @@
     var userBust;
 
     var userAceCount = 0;
-    var userAceMath;
+    var userAceMath = 0;
 
     var dealerCardOne;
     var dealerCardOneResult;
@@ -37,8 +37,8 @@
     var dealerTotal;
     var dealerBust;
 
-    var dealerAceCount;
-    var dealerAceMath;
+    var dealerAceCount = 0;
+    var dealerAceMath = 0;
 
     var blackJack;
 
@@ -500,7 +500,7 @@
         if (blackJack == true) {
         } else if (userBust == "busted") {
         } else {
-            alert("The dealer turned up a " + dealerCardTwoValue + ". The dealers' total is " + dealerTotal + ".");
+            alert("The dealer turned up a " + dealerCardTwoResult + ". The dealers' total is " + dealerTotal + ".");
             while (dealerTotal < 17) {
                 drawACardDealer();
 
