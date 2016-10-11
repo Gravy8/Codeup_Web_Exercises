@@ -479,9 +479,14 @@
                 userTotal += nextCardValue;
 
                 if (userTotal > 21) {
-                    alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
-                    userBust = "busted";
-                    break;
+                    if ((userAceCount > 0) && (userAceMath == 0)) {
+                        userTotal -= 10;
+                        userAceMath++;
+                    } else {
+                        alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
+                        userBust = "busted";
+                        break;
+                    }
                 } else if (userTotal == 21) {
                         alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
                         break;
@@ -502,9 +507,14 @@
                 dealerTotal += dealerNextCardValue;
 
                 if (dealerTotal > 21) {
-                    alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ".");
-                    dealerBust= "busted";
-                    break;
+                    if ((dealerAceCount > 0) && (dealerAceMath == 0)) {
+                        dealerTotal -= 10;
+                        dealerAceMath++;
+                    } else {
+                        alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ".");
+                        dealerBust = "busted";
+                        break;
+                    }
                 }else if ((dealerTotal <= 21) && (dealerTotal >= 17)) {
                     alert("Dealer drew a " + dealerNextCardResult + ". Dealer total is " + dealerTotal + ".");
                     break;
@@ -538,6 +548,10 @@
             cardsPulled = [];
             dealerBust = "notbusted";
             userBust = "notbusted";
+            dealerAceCount = 0;
+            dealerAceMath = 0;
+            userAceCount = 0;
+            userAceMath = 0;
             blackJack = false;
             playBlackJack()
         }
