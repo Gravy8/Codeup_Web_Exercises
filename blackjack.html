@@ -471,8 +471,7 @@
 
         if (blackJack == true) {
         } else if (confirm("Your cards are " + cardOneResult + " and " + cardTwoResult + ". Your total is currently "
-                        + userTotal + ". The dealers' cards are " + dealerCardOneResult + " and " + dealerCardTwoResult
-                        + ". Dealer total is currently " + dealerTotal + ". Would you like to hit?")) {
+                        + userTotal + ". The dealer is showing a " + dealerCardOneResult + ". Would you like to hit?")) {
             while (userTotal <= 21) {
                 drawACardUser();
 
@@ -491,8 +490,8 @@
                         alert("You drew a " + nextCardResult + ". Your total is " + userTotal + ".");
                         break;
                 }
-                if (!confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". The dealers' total is "
-                                + dealerTotal + ". Would you like to hit?")) {
+                if (!confirm("You drew a " + nextCardResult + ". Your total is " + userTotal + ". The dealer is showing a "
+                                        + dealerCardOneResult + ". Would you like to hit?")) {
                     break;
                 }
             }
@@ -501,6 +500,7 @@
         if (blackJack == true) {
         } else if (userBust == "busted") {
         } else {
+            alert("The dealer turned up a " + dealerCardTwoValue + ". The dealers' total is " + dealerTotal + ".");
             while (dealerTotal < 17) {
                 drawACardDealer();
 
