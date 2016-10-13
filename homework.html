@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+<script>
+    var arrayOfStates = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+    var statesStartingWithT;
+    function findStatesThatStartWithT(array) {
+        var startWithT = [];
+        array.forEach(function (state) {
+            if (state[0].toLowerCase() == "t") {
+                startWithT.push(state);
+            }
+        });
+        return startWithT;
+    }
+    statesStartingWithT = findStatesThatStartWithT(arrayOfStates);
+    console.log(statesStartingWithT);
+
+
+
+    var statesWith2S;
+    function statesWith2OrMoreS(array) {
+        var statesWith2 = [];
+        array.forEach(function(state, i) {
+            if (state.indexOf("s") < state.lastIndexOf("s")) {
+                statesWith2.push(state);
+            }
+        });
+        return statesWith2;
+    }
+    statesWith2S = statesWith2OrMoreS(arrayOfStates);
+    console.log(statesWith2S);
+
+
+
+
+
+
+    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var arrayOfSquaredNumbers;
+    function squareArrayOfNumbers(array) {
+        var squaredNumbers = [];
+        array.forEach(function(number) {
+            squaredNumbers.push(number * number);
+        });
+        return squaredNumbers;
+    }
+    arrayOfSquaredNumbers = squareArrayOfNumbers(numbers);
+    console.log(arrayOfSquaredNumbers);
+
+
+
+
+
+    var names = ["yennifer", "jennifer", "yasmine", "jasmine"];
+    var uppercaseY;
+
+    function upperCaseNamesAndReturnOnlyY(array) {
+        var resultsIWant = [];
+        array.forEach(function(name) {
+            if (name[0].toLowerCase() == "y") {
+                resultsIWant.push(name.replace(name[0], name[0].toUpperCase()));
+            }
+        });
+        return resultsIWant;
+    }
+
+    uppercaseY = upperCaseNamesAndReturnOnlyY(names);
+    console.log(uppercaseY);
+
+
+
+
+
+    var numbersDivisibleByThree;
+
+    function returnNumbersDivisibleByThree(array) {
+        var numbersInArrayDivisibleByThree = [];
+        array.forEach(function(number) {
+           if (number % 3 == 0) {
+               numbersInArrayDivisibleByThree.push(number);
+           }
+        });
+        return numbersInArrayDivisibleByThree;
+    }
+    numbersDivisibleByThree = returnNumbersDivisibleByThree(numbers);
+    console.log(numbersDivisibleByThree);
+
+</script>
+</body>
+</html>
