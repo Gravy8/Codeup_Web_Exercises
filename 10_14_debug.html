@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10/14 Debug</title>
+</head>
+<body>
+<script>
+    'use strict';
+
+    /*
+     * How many times a lucky number is repeated for every 100 customers?
+     */
+    var luckyNumber;
+    var i = 1;
+    var timesZero = 0;
+    var timesOne = 0;
+    var timesTwo = 0;
+    var timesThree = 0;
+    var timesFour = 0;
+    var timesFive = 0;
+
+    var arrayOfCounters = [];
+    var luckyNumberArray = [];
+    var numberCounter;
+
+    while (i <= 100) {
+        luckyNumber = Math.floor(Math.random()* 6);
+        switch (luckyNumber) {
+            case 0:
+                timesZero++;
+                break;
+            case 1:
+                timesOne++;
+                break;
+            case 2:
+                timesTwo++;
+                break;
+            case 3:
+                timesThree++;
+                break;
+            case 4:
+                timesFour++;
+                break;
+            case 5:
+                timesFive++;
+                break;
+        }
+        i++;
+    }
+    //this section simplifies console logging 6 seperate times
+    arrayOfCounters = [timesZero, timesOne, timesTwo, timesThree, timesFour, timesFive];
+
+    arrayOfCounters.forEach(function(element, index) {
+       console.log(index + " appeared " + element + " times");
+    });
+    //
+
+
+    console.log("0 appeared " + timesZero + " times");
+    console.log("1 appeared " + timesOne + " times");
+    console.log("2 appeared " + timesTwo + " times");
+    console.log("3 appeared " + timesThree + " times");
+    console.log("4 appeared " + timesFour + " times");
+    console.log("5 appeared " + timesFive + " times");
+    console.log(timesZero + timesOne + timesTwo + timesThree + timesFour + timesFive);
+
+    // The output should be something like
+    i = 1;
+    while (i <= 100) {
+        luckyNumber = Math.floor(Math.random() * 6);
+        luckyNumberArray.push(luckyNumber);
+        i++;
+    }
+
+    for (var j = 0; j < 6; j++) {
+        numberCounter = 0;
+        luckyNumberArray.forEach(function(element) {
+            if (element == j) {
+                numberCounter++;
+            }
+        });
+        console.log(j + " appeared " + numberCounter + " times");
+    }
+
+
+    // 0 appeared 10 times
+    // 1 appeared 20 times
+    // 2 appeared 15 times
+    // 3 appeared 35 times
+    // 4 appeared 4 times
+    // 5 appeared 16 times
+
+    // The total should be 100
+</script>
+</body>
+</html>
