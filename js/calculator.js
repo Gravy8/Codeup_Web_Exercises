@@ -14,6 +14,14 @@ var multiplication = document.getElementById("*button");
 var division = document.getElementById("/button");
 var equate = document.getElementById("=button");
 var clear = document.getElementById("cbutton");
+var decimal = document.getElementById(".button");
+var exponent = document.getElementById("exponent-button");
+var negativeConverter = document.getElementById("negative-button");
+
+var boxOne = document.getElementById("input-one");
+var boxTwo = document.getElementById("input-two");
+var boxOperator = document.getElementById("input-operator");
+
 var temporaryOperator = "";
 var temporaryNumber = "";
 
@@ -21,201 +29,306 @@ var temporaryNumber = "";
 
 
 function clickedOne () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "1";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "1";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "1";
     } else {
-        document.getElementById("input-two").value += "1";
+        boxTwo.value += "1";
     }
 }
 
 function clickedTwo () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "2";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "2";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "2";
     } else {
-        document.getElementById("input-two").value += "2";
+        boxTwo.value += "2";
     }
 }
 
 function clickedThree () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "3";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.valuboxOnee += "3";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "3";
     } else {
-        document.getElementById("input-two").value += "3";
+        boxTwo.value += "3";
     }
 }
 
 function clickedFour () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "4";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "4";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "4";
     } else {
-        document.getElementById("input-two").value += "4";
+        boxTwo.value += "4";
     }
 }
 
 function clickedFive () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "5";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "5";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "5";
     } else {
-        document.getElementById("input-two").value += "5";
+        boxTwo.value += "5";
     }
 }
 
 function clickedSix () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "6";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "6";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "6";
     } else {
-        document.getElementById("input-two").value += "6";
+        boxTwo.value += "6";
     }
 }
 
 function clickedSeven () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "7";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "7";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "7";
     } else {
-        document.getElementById("input-two").value += "7";
+        boxTwo.value += "7";
     }
 }
 
 function clickedEight () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "8";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "8";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "8";
     } else {
-        document.getElementById("input-two").value += "8";
+        boxTwo.value += "8";
     }
 }
 
 function clickedNine () {
-    if (document.getElementById("input-operator").value == "") {
-        document.getElementById("input-one").value += "9";
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "9";
+    } else if (boxOperator.value == "") {
+        boxOne.value += "9";
     } else {
-        document.getElementById("input-two").value += "9";
+        boxTwo.value += "9";
     }
 }
 
 function clickedZero () {
-    if (document.getElementById("input-operator").value == "") {
-        if (document.getElementById("input-one").value == ""){
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "0";
+    } else if (boxOperator.value == "") {
+        if (boxOne.value == "0"){
         } else {
-            document.getElementById("input-one").value += "0";
+            boxOne.value += "0";
         }
     } else {
-        if (document.getElementById("input-two").value == ""){
+        if (boxTwo.value == "0"){
         } else {
-            document.getElementById("input-two").value += "0";
+            boxTwo.value += "0";
         }
     }
 }
 
 
 function clickedPlus () {
-    if ((document.getElementById("input-one").value != "") && (document.getElementById("input-operator").value != "")) {
-    } else if ((document.getElementById("input-one").value == "") && (document.getElementById("input-two").value != "")) {
-        document.getElementById("input-one").value = document.getElementById("input-two").value;
-        document.getElementById("input-two").value = "";
-        document.getElementById("input-operator").value = "+";
+    if ((boxOne.value != "") && (boxOperator.value != "")) {
+    } else if (boxTwo.value == "NaN") {
+    } else if ((boxOne.value == "") && (boxTwo.value != "")) {
+        boxOne.value = boxTwo.value;
+        boxTwo.value = "";
+        boxOperator.value = "+";
         temporaryNumber = "";
         temporaryOperator = "";
-    } else if (document.getElementById("input-one").value == "") {
-    } else if (document.getElementById("input-two").value == "") {
-        document.getElementById("input-operator").value += "+";
+    } else if (boxOne.value == "") {
+    } else if (boxTwo.value == "") {
+        boxOperator.value += "+";
     }
 }
 
 function clickedMinus () {
-    if ((document.getElementById("input-one").value != "") && (document.getElementById("input-operator").value != "")) {
-    } else if ((document.getElementById("input-one").value == "") && (document.getElementById("input-two").value != "")) {
-        document.getElementById("input-one").value = document.getElementById("input-two").value;
-        document.getElementById("input-two").value = "";
-        document.getElementById("input-operator").value = "-";
+    if ((boxOne.value != "") && (boxOperator.value != "")) {
+    } else if (boxTwo.value == "NaN") {
+    } else if ((boxOne.value == "") && (boxTwo.value != "")) {
+        boxOne.value = boxTwo.value;
+        boxTwo.value = "";
+        boxOperator.value = "-";
         temporaryNumber = "";
         temporaryOperator = "";
-    } else if (document.getElementById("input-one").value == "") {
-    } else if (document.getElementById("input-two").value == "") {
-        document.getElementById("input-operator").value += "-";
+    } else if (boxOne.value == "") {
+    } else if (boxTwo.value == "") {
+        boxOperator.value += "-";
     }
 }
 
 function clickedTimes () {
-    if ((document.getElementById("input-one").value != "") && (document.getElementById("input-operator").value != "")) {
-    } else if ((document.getElementById("input-one").value == "") && (document.getElementById("input-two").value != "")) {
-        document.getElementById("input-one").value = document.getElementById("input-two").value;
-        document.getElementById("input-two").value = "";
-        document.getElementById("input-operator").value = "*";
+    if ((boxOne.value != "") && (boxOperator.value != "")) {
+    } else if (boxTwo.value == "NaN") {
+    } else if ((boxOne.value == "") && (boxTwo.value != "")) {
+        boxOne.value = boxTwo.value;
+        boxTwo.value = "";
+        boxOperator.value = "*";
         temporaryNumber = "";
         temporaryOperator = "";
-    } else if (document.getElementById("input-one").value == "") {
-    } else if (document.getElementById("input-two").value == "") {
-        document.getElementById("input-operator").value += "*";
+    } else if (boxOne.value == "") {
+    } else if (boxTwo.value == "") {
+        boxOperator.value += "*";
     }
 }
 
 function clickedDividedBy () {
-    if ((document.getElementById("input-one").value != "") && (document.getElementById("input-operator").value != "")) {
-    } else if ((document.getElementById("input-one").value == "") && (document.getElementById("input-two").value != "")) {
-        document.getElementById("input-one").value = document.getElementById("input-two").value;
-        document.getElementById("input-two").value = "";
-        document.getElementById("input-operator").value = "/";
+    if ((boxOne.value != "") && (boxOperator.value != "")) {
+    } else if (boxTwo.value == "NaN") {
+    } else if ((boxOne.value == "") && (boxTwo.value != "")) {
+        boxOne.value = boxTwo.value;
+        boxTwo.value = "";
+        boxOperator.value = "/";
         temporaryNumber = "";
         temporaryOperator = "";
-    }else if (document.getElementById("input-one").value == "") {
-    } else if (document.getElementById("input-two").value == "") {
-        document.getElementById("input-operator").value += "/";
+    } else if (boxOne.value == "") {
+    } else if (boxTwo.value == "") {
+        boxOperator.value += "/";
     }
 }
 
-
 function clickedEquals () {
-    if ((document.getElementById("input-one").value == "") && (document.getElementById("input-operator").value == "")
-        && (document.getElementById("input-two").value != "")) {
+    if ((boxOne.value == "") && (boxOperator.value == "")
+        && (boxTwo.value != "")) {
         switch (temporaryOperator) {
             case "+":
-                document.getElementById("input-two").value = parseFloat(document.getElementById("input-two").value) + parseFloat(temporaryNumber);
+                boxTwo.value = parseFloat(boxTwo.value) + parseFloat(temporaryNumber);
                 break;
             case "-":
-                document.getElementById("input-two").value = parseFloat(document.getElementById("input-two").value) - parseFloat(temporaryNumber);
+                boxTwo.value = parseFloat(boxTwo.value) - parseFloat(temporaryNumber);
                 break;
             case "*":
-                document.getElementById("input-two").value = parseFloat(document.getElementById("input-two").value) * parseFloat(temporaryNumber);
+                boxTwo.value = parseFloat(boxTwo.value) * parseFloat(temporaryNumber);
                 break;
             case "/":
-                document.getElementById("input-two").value = parseFloat(document.getElementById("input-two").value) / parseFloat(temporaryNumber);
+                boxTwo.value = parseFloat(boxTwo.value) / parseFloat(temporaryNumber);
+                break;
+            case "^":
+                boxTwo.value = Math.pow(parseFloat(boxTwo.value), parseFloat(temporaryNumber));
                 break;
         }
     }
 
-    if ((document.getElementById("input-one").value != "") && (document.getElementById("input-two").value != "")) {
-        var firstNumber = parseFloat(document.getElementById("input-one").value);
-        var secondNumber = parseFloat(document.getElementById("input-two").value);
+    if ((boxOne.value != "") && (boxTwo.value != "")) {
+        var firstNumber = parseFloat(boxOne.value);
+        var secondNumber = parseFloat(boxTwo.value);
 
-        temporaryOperator = document.getElementById("input-operator").value;
-        temporaryNumber = document.getElementById("input-two").value;
+        temporaryOperator = boxOperator.value;
+        temporaryNumber = boxTwo.value;
 
-        switch (document.getElementById("input-operator").value) {
+        switch (boxOperator.value) {
             case "+":
-                document.getElementById("input-two").value = firstNumber + secondNumber;
+                boxTwo.value = firstNumber + secondNumber;
                 break;
             case "-":
-                document.getElementById("input-two").value = firstNumber - secondNumber;
+                boxTwo.value = firstNumber - secondNumber;
                 break;
             case "*":
-                document.getElementById("input-two").value = firstNumber * secondNumber;
+                boxTwo.value = firstNumber * secondNumber;
                 break;
             case "/":
-                document.getElementById("input-two").value = firstNumber / secondNumber;
+                boxTwo.value = firstNumber / secondNumber;
+                break;
+            case "^":
+                boxTwo.value = Math.pow(firstNumber, secondNumber);
                 break;
         }
-        document.getElementById("input-one").value = "";
-        document.getElementById("input-operator").value = "";
+        if (boxTwo.value == "Infinity") {
+            boxTwo.value = "NaN";
+        }
+        boxOne.value = "";
+        boxOperator.value = "";
 
     }
 }
 
 function clearAll () {
-    document.getElementById("input-one").value = "";
-    document.getElementById("input-operator").value = "";
-    document.getElementById("input-two").value = "";
+    boxOne.value = "";
+    boxOperator.value = "";
+    boxTwo.value = "";
     temporaryNumber = "";
     temporaryOperator = "";
+}
+
+function clickedDecimal () {
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += "0.";
+    } else if (boxOperator.value == "") {
+        if (boxOne.value == "") {
+            boxOne.value += "0.";
+        } else if ((boxOne.value != "") &&
+(boxOne.value.indexOf(".") != -1)) {
+        } else {
+            boxOne.value += ".";
+        }
+    } else {
+        if (boxTwo.value == "") {
+            boxTwo.value += "0.";
+        } else if ((boxTwo.value != "") &&
+(boxTwo.value.indexOf(".") != -1)) {
+        } else {
+            boxTwo.value += ".";
+        }
+    }
+}
+
+function clickedExponent () {
+    if ((boxOne.value != "") && (boxOperator.value != "")) {
+    } else if (boxTwo.value == "NaN") {
+    } else if ((boxOne.value == "") && (boxTwo.value != "")) {
+        boxOne.value = boxTwo.value;
+        boxTwo.value = "";
+        boxOperator.value = "^";
+        temporaryNumber = "";
+        temporaryOperator = "";
+    } else if (boxOne.value == "") {
+    } else if (boxTwo.value == "") {
+        boxOperator.value += "^";
+    }
+}
+
+function clickedConverter () {
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+    } else if (boxOperator.value == "") {
+        if (boxOne.value == "") {
+            boxOne.value += "-";
+        } else if (boxOne.value == "-") {
+            boxOne.value = "";
+        } else if (boxOne.value.indexOf("-") != -1) {
+            boxOne.value = Math.abs(parseFloat(boxOne.value));
+        } else {
+            boxOne.value = -Math.abs(parseFloat(boxOneboxOne.value));
+        }
+    } else {
+        if (boxTwo.value == "") {
+            boxTwo.value += "-";
+        } else if (boxTwo.value == "-") {
+            boxTwo.value = "";
+        } else if (boxTwo.value.indexOf("-") != -1) {
+            boxTwo.value = Math.abs(parseFloat(boxTwo.value));
+        } else {
+            boxTwo.value = -Math.abs(parseFloat(boxTwo.value));
+        }
+    }
 }
 
 
@@ -238,3 +351,6 @@ multiplication.addEventListener("click", clickedTimes);
 division.addEventListener("click", clickedDividedBy);
 equate.addEventListener("click", clickedEquals);
 clear.addEventListener("click", clearAll);
+decimal.addEventListener("click", clickedDecimal);
+exponent.addEventListener("click", clickedExponent);
+negativeConverter.addEventListener("click", clickedConverter);
