@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <div class=calc-container>
-        <div class="row">
+        <div class="row text-boxes">
             <textarea class="big-input-box" id="input-one" readonly></textarea>
             <textarea class="small-input-box" id="input-operator" readonly></textarea>
             <textarea class="big-input-box" id="input-two" readonly></textarea>
@@ -41,6 +41,17 @@
             <button class="calculator-button bigger-button number" id="0button">0</button>
             <button class="calculator-button operator" id=".button">.</button>
             <button class="calculator-button" id="=button">=</button>
+        </div>
+        <div class="row">
+            <button class="calculator-button even-bigger-button number" id="rbutton">R</button>
+        </div>
+        <div class="row">
+            <label class="random" for="minimum">Min Random</label>
+            <input class="random" id="minimum" value="1">
+        </div>
+        <div class="row">
+            <label class="random" for="maximum">Max Random</label>
+            <input class="random" id="maximum" value="1000">
         </div>
     </div>
 </div>

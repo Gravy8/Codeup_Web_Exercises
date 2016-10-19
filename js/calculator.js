@@ -26,6 +26,9 @@ var temporaryOperator = "";
 var temporaryNumber = "";
 
 
+var randomButton = document.getElementById("rbutton");
+
+
 
 
 function clickedOne () {
@@ -316,7 +319,7 @@ function clickedConverter () {
         } else if (boxOne.value.indexOf("-") != -1) {
             boxOne.value = Math.abs(parseFloat(boxOne.value));
         } else {
-            boxOne.value = -Math.abs(parseFloat(boxOneboxOne.value));
+            boxOne.value = -Math.abs(parseFloat(boxOne.value));
         }
     } else {
         if (boxTwo.value == "") {
@@ -328,6 +331,21 @@ function clickedConverter () {
         } else {
             boxTwo.value = -Math.abs(parseFloat(boxTwo.value));
         }
+    }
+}
+
+function clickedRandom () {
+    var minimum = parseFloat(document.getElementById("minimum").value);
+    var maximum = parseFloat(document.getElementById("maximum").value);
+    var random = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+
+    if ((boxOne.value == "") && (boxTwo.value != "")) {
+        clearAll();
+        boxOne.value += random;
+    } else if (boxOperator.value == "") {
+        boxOne.value += random;
+    } else {
+        boxTwo.value += random;
     }
 }
 
@@ -354,3 +372,4 @@ clear.addEventListener("click", clearAll);
 decimal.addEventListener("click", clickedDecimal);
 exponent.addEventListener("click", clickedExponent);
 negativeConverter.addEventListener("click", clickedConverter);
+randomButton.addEventListener("click", clickedRandom);

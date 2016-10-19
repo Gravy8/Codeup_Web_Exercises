@@ -25,3 +25,13 @@
 .bigger-button {
     width: 50%;
 }
+.text-boxes {
+    text-align: center;
+}
+.even-bigger-button {
+    width: 100%;
+}
+.random {
+    display: inline;
+    width: 45%;
+}
