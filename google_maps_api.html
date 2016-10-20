@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps API</title>
+    <style>
+        #map-canvas {
+            width: 770px;
+            height: 481px;
+        }
+    </style>
+</head>
+<body>
+<div id="map-canvas"></div>
+<a id="harrisons" href="#">Harrisons</a>
+<a id="windsor" href="#">Windsor</a>
+<a id="cVP" href="#">Cousin Vinnys Pizza</a>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxfHPm8rwkBX2_bfBrYEgjv5uRJtbSgyY"></script>
+<script>
+    var geocoder = new google.maps.Geocoder();
+    var map;
+    var harrisonsLocation = {};
+    var windsorLocation = {};
+    var cVPLocation = {};
+    var harrisonsButton = document.getElementById("harrisons");
+    var windsorButton = document.getElementById("windsor");
+    var cVPButton = document.getElementById("cVP");
+
+    var infoWindow = new google.maps.InfoWindow({
+        content: "Harrisons' Tipp City<br>Best Chicken Wings in Town<br>" +
+        "<ul><li>Biggest Anywhere</li><li>Homemade Sauces</li></ul>"
+    });
+    var mapOptions = {
+        zoom: 20,
+        center: {
+            lat: 39.9584,
+            lng: -84.1722
+        }
+    };
+    geocoder.geocode({ "address": "106 E Main St, Tipp City, OH 45371"}, function(results, status) {
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            harrisonsLocation.lat = results[0].geometry.location.lat();
+            harrisonsLocation.lng = results[0].geometry.location.lng();
+            var marker = new google.maps.Marker({
+                position: harrisonsLocation,
+                map: map,
+                animation: google.maps.Animation.DROP
+            });
+            marker.addListener("click", function () {
+                infoWindow.open(map, marker);
+            });
+        } else {
+            alert("Geocoding was not successful - STATUS: " + status);
+        }
+    });
+    geocoder.geocode({"address": "5223 N Central Ave, Phoenix, AZ 85012"}, function(results, status) {
+       if (status == google.maps.GeocoderStatus.OK) {
+           windsorLocation.lat = results[0].geometry.location.lat();
+           windsorLocation.lng = results[0].geometry.location.lng();
+           /*var marker = new google.maps.Marker({
+               position: windsorLocation,
+               map: map
+           });*/
+       } else {
+           alert("Geocoding was not successful - STATUS: " + status);
+       }
+        var marker = new google.maps.Marker({
+            position: windsorLocation,
+            map: map
+        });
+    });
+    geocoder.geocode({"address": "6676 Town Center Dr, Dayton, OH 45414"}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+            cVPLocation.lat = results[0].geometry.location.lat();
+            cVPLocation.lng = results[0].geometry.location.lng();
+        } else {
+            alert("Geocoding was not successful - STATUS: " + status);
+        }
+        var marker = new google.maps.Marker({
+            position: cVPLocation,
+            map: map
+        });
+    });
+    harrisonsButton.addEventListener("click", function () {
+       event.preventDefault();
+        map.setCenter(harrisonsLocation);
+    });
+    windsorButton.addEventListener("click", function () {
+        event.preventDefault();
+        map.setCenter(windsorLocation);
+    });
+    cVPButton.addEventListener("click", function () {
+        event.preventDefault();
+        map.setCenter(cVPLocation);
+    });
+</script>
+</body>
+</html>
