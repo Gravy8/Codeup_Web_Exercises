@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base 10 to Binary</title>
+</head>
+<body>
+<script>
+function convertToBaseTen (binary) {
+    var string = binary.toString();
+    var array = string.split("");
+    array.reverse();
+    var total = 0;
+    for (var i = 0; i < string.length; i++) {
+        total += parseFloat(array[i]) * Math.pow(2, i);
+    }
+    return total;
+}
+console.log(convertToBaseTen(1100110));
+console.log(convertToBaseTen(10100011));
+console.log(convertToBaseTen(101101));
+console.log(convertToBaseTen(110100101010));
+console.log(convertToBaseTen(11101111));
+console.log(convertToBaseTen(01000010));
+</script>
+</body>
+</html>
