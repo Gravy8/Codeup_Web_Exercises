@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Exercises</title>
+</head>
+<body>
+<div id="containerid" class="container">
+    <h1 id="h1">This is an H1</h1>
+    <p id="p">
+        This is a paragraph element containing words. Also sentences. Probably some run-ons. But mainly, it's a paragraph element.
+    </p>
+    <ul id="ul">
+        <li class="li" id="li1">This is the first item in my ul</li>
+        <li class="li" id="li2">This is the second item in my ul</li>
+        <li class="li" id="li3">This is the third item in my ul</li>
+    </ul>
+    <ul class="list">
+        <li class="codeup">1</li>
+        <li class="codeup">2</li>
+        <li class="codeup">3</li>
+        <li class="codeup">4</li>
+    </ul>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+var $codeupItems = $(".codeup");
+$codeupItems.css("border", "1px solid red");
+
+</script>
+</body>
+</html>
