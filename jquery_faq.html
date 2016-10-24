@@ -60,13 +60,13 @@
 <script>
     $("#answerButton").on("click", function (event) {
        event.preventDefault();
-       $("dd").fadeToggle();
+       $("dd").slideToggle();
     });
     $("ul").each(function(index, element) {//element is not a jquery object
         $(this).children().first().css("font-weight", "bold")
     });
     $("h3").click(function () {
-       $(this).next().fadeToggle("fast", function() {alert("You either added or removed a list")});
+       $(this).next().slideToggle("fast", function() {alert("You either added or removed a list")});
     });
 
 
