@@ -11,16 +11,16 @@
     "use strict";
 var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13];
 var counter = 0;
-    $(document).keyup(function(event){
-        if (konami[counter] == event.keyCode) {
-            counter ++;
-            if (counter == 11) {
-                $("body").css("background-image", "url('img/dickbutt.jpeg')");
-            }
-        } else {
-            counter = 0;
+$(document).keyup(function(event){
+    if (konami[counter] == event.keyCode) {
+        counter ++;
+        if (counter == 11) {
+            $("body").css("background-image", "url('img/dickbutt.jpeg')");
         }
-    });
+    } else {
+        counter = 0;
+    }
+});
 </script>
 </body>
 </html>
