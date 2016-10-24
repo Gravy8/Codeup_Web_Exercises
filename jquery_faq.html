@@ -60,13 +60,13 @@
 <script>
     $("#answerButton").on("click", function (event) {
        event.preventDefault();
-       $("dd").toggleClass("invisible");
+       $("dd").toggle();
     });
     $("ul").each(function(index, element) {//element is not a jquery object
         $(this).children().first().css("font-weight", "bold")
     });
     $("li").on("click", function () {
-       $(this).parent().addClass("invisible");
+       $(this).parent().hide();
     });
 </script>
 </body>
