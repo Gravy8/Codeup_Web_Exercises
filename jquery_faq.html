@@ -33,11 +33,40 @@
     <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
 </dl>
 <a id="answerButton" href="#">Show Answers</a>
+
+<h3>Park One</h3>
+<ul>
+    <li>This park is a park</li>
+    <li>Park is spelled p-a-r-k</li>
+    <li>Probably has grass</li>
+    <li>Homeless people live in parks</li>
+</ul>
+<h3>Park Two</h3>
+<ul>
+    <li>This park is a park</li>
+    <li>Park is spelled p-a-r-k</li>
+    <li>Probably has grass</li>
+    <li>Homeless people live in parks</li>
+</ul>
+<h3>Park Three</h3>
+<ul>
+    <li>This park is a park</li>
+    <li>Park is spelled p-a-r-k</li>
+    <li>Probably has grass</li>
+    <li>Homeless people live in parks</li>
+</ul>
+
 <script src="js/jquery.js"></script>
 <script>
     $("#answerButton").on("click", function (event) {
        event.preventDefault();
        $("dd").toggleClass("invisible");
+    });
+    $("ul").each(function(index, element) {//element is not a jquery object
+        $(this).children().first().css("font-weight", "bold")
+    });
+    $("li").on("click", function () {
+       $(this).parent().addClass("invisible");
     });
 </script>
 </body>
