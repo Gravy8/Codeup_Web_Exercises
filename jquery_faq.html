@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery FAQ</title>
+    <style>
+        .invisible {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<dl>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+    <dt>Lorem ipsum dolor sit amet, consectetur adipiscing?</dt>
+    <dd class="invisible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla a mauris velit. Lorem ipsum dolor sit amet, consectetur.</dd>
+</dl>
+<a id="answerButton" href="#">Show Answers</a>
+<script src="js/jquery.js"></script>
+<script>
+    $("#answerButton").on("click", function (event) {
+       event.preventDefault();
+       $("dd").toggleClass("invisible");
+    });
+</script>
+</body>
+</html>
