@@ -15,11 +15,15 @@
             padding-top: 10px;
             margin-bottom: 0;
         }
-        .rowOfWeather, .rowOfForms {
+        .rowOfWeather, .rowOfForms, .rowMap {
             padding: 5px;
         }
         .weather_box {
             border: 1px solid #64d8ff;
+        }
+        #map-canvas {
+            width: 100%;
+            height: 400px;
         }
 
     </style>
@@ -33,37 +37,53 @@
     <div id="tomorrow" class="col-sm-4 weather_box text-center"></div>
     <div id="day_after" class="col-sm-4 weather_box text-center"></div>
 </div>
-<div class="row rowOfForms text-center">
-    <div class="col-sm-4">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label for="latitude">Latitude</label>
-                <input id="latitude" class="form-control" type="text" value="39.7589">
-            </div>
-            <div class="form-group">
-                <label for="longitude">Longitude</label>
-                <input id="longitude" class="form-control" type="text" value="-84.1916">
-            </div>
-            <div class="form-group">
-                <button id="latLongButton" class="btn btn-default">Give me Weather</button>
-            </div>
-        </form>
+    <div class="row rowMap">
+        <div id="map-canvas"></div>
     </div>
-    <div class="col-sm-4 col-sm-offset-4">
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label for="cityAndState">City</label>
-                <input id="cityAndState" class="form-control" type="text" placeholder="City, State">
-            </div>
-            <div class="form-group">
-                <button id="cityStateButton" class="btn btn-default">Give me Weather</button>
-            </div>
-        </form>
+    <div class="row rowOfForms text-center">
+        <div class="col-sm-4">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input id="latitude" class="form-control" type="text" value="39.7589">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input id="longitude" class="form-control" type="text" value="-84.1916">
+                </div>
+                <div class="form-group">
+                    <button id="latLongButton" class="btn btn-default">Give me Weather</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="cityAndState">City</label>
+                    <input id="cityAndState" class="form-control" type="text" placeholder="City, State">
+                </div>
+                <div class="form-group">
+                    <button id="cityStateButton" class="btn btn-default">Give me Weather</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </div>
 <script src="js/jquery.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxfHPm8rwkBX2_bfBrYEgjv5uRJtbSgyY"></script>
 <script>
+    var map;
+    var markerLat;
+    var markerLng;
+    var markers = [];
+    var mapOptions = {
+        zoom: 4,
+        center: {
+            lat: 39.8282,
+            lng: -98.5795
+        }
+    };
+
     $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
         APPID: "8697a27bd465e2134b0bed1884b1d3a0",
         q:     "San Antonio, TX",
@@ -91,6 +111,55 @@
                         "<p>Wind: " + parseInt(data.list[2].speed) + "</p>" +
                         "<p>Pressure: " + data.list[2].pressure + "</p>");
             });
+
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+    function addMarker(latLng, map) {
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+        });
+        markerLat = latLng.lat();
+        markerLng = latLng.lng();
+        $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+            APPID: "8697a27bd465e2134b0bed1884b1d3a0",
+            lat: markerLat,
+            lon: markerLng,
+            units: "imperial"
+        })
+                .done(function(data) {
+                    $("#city").html(data.city.name);
+                    $("#today").html("<p class='temp'>" + parseInt(data.list[0].temp.max) + "&#176/" + parseInt(data.list[0].temp.min) + "&#176</p>" +
+                            "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" +
+                            "<p>Clouds: " + data.list[0].weather[0].description + "</p>" +
+                            "<p>Humidity: " + data.list[0].humidity + "</p>" +
+                            "<p>Wind: " + parseInt(data.list[0].speed) + "</p>" +
+                            "<p>Pressure: " + data.list[0].pressure + "</p>");
+                    $("#tomorrow").html("<p class='temp'>" + parseInt(data.list[1].temp.max) + "&#176/" + parseInt(data.list[1].temp.min) + "&#176</p>" +
+                            "<img src='http://openweathermap.org/img/w/" + data.list[1].weather[0].icon + ".png'>" +
+                            "<p>Clouds: " + data.list[1].weather[0].description + "</p>" +
+                            "<p>Humidity: " + data.list[1].humidity + "</p>" +
+                            "<p>Wind: " + parseInt(data.list[1].speed) + "</p>" +
+                            "<p>Pressure: " + data.list[1].pressure + "</p>");
+                    $("#day_after").html("<p class='temp'>" + parseInt(data.list[2].temp.max) + "&#176/" + parseInt(data.list[2].temp.min) + "&#176</p>" +
+                            "<img src='http://openweathermap.org/img/w/" + data.list[2].weather[0].icon + ".png'>" +
+                            "<p>Clouds: " + data.list[2].weather[0].description + "</p>" +
+                            "<p>Humidity: " + data.list[2].humidity + "</p>" +
+                            "<p>Wind: " + parseInt(data.list[2].speed) + "</p>" +
+                            "<p>Pressure: " + data.list[2].pressure + "</p>");
+                });
+
+        markers.push(marker);
+    }
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+        }
+    }
+    function clearMarkers() {
+        setMapOnAll(null);
+    }
+
     $("#latLongButton").click(function(e) {
         e.preventDefault();
         $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
@@ -149,6 +218,10 @@
                             "<p>Wind: " + parseInt(data.list[2].speed) + "</p>" +
                             "<p>Pressure: " + data.list[2].pressure + "</p>");
                 });
+    });
+    map.addListener('click', function(e) {
+        clearMarkers();
+        addMarker(e.latLng, map);
     });
 </script>
 </body>
