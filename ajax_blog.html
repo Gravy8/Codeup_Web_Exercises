@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Blog</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <div class="row" id="posts"></div>
+    <div class="row buttons col-sm-6 col-sm-offset-3 text-center">
+        <button id="prevBtn" class="btn btn-default btn-lg">Prev</button>
+        <button id="nextBtn" class="btn btn-primary btn-lg">Next</button>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var i = 0;
+    $.get("data/blog.json")
+            .done(function (data) {
+                var newCatergories;
+                if (data[i].categories.length > 1) {
+                    newCatergories = data[i].categories.join(', ');
+                } else {
+                    newCatergories = data[i].categories;
+                }
+                $("#posts").append("<div class='col-sm-6 col-sm-offset-3'><h3>" + data[i].title + " <small>" + data[i].date + "</small></h3><p>Categories: " +
+                        newCatergories + "</p><p>" + data[i].content + "</p></div>");
+            })
+            .fail(function (error) {
+                console.log(error);
+            });
+    $("#prevBtn").click(function(event) {
+        event.preventDefault();
+        $.get("data/blog.json")
+                .done(function(data) {
+                    i--;
+                    if (i < 0) {
+                        i = data.length - 1;
+                    }
+                    var newCatergories;
+                    if (data[i].categories.length > 1) {
+                        newCatergories = data[i].categories.join(', ');
+                    } else {
+                        newCatergories = data[i].categories;
+                    }
+                    $("#posts").html("<div class='col-sm-6 col-sm-offset-3'><h3>" + data[i].title + " <small>" + data[i].date + "</small></h3><p>Categories: " +
+                            newCatergories + "</p><p>" + data[i].content + "</p></div>");
+                })
+                .fail(function(error) {
+                    console.log(error);
+                });
+    });
+    $("#nextBtn").click(function(event) {
+        event.preventDefault();
+        $.get("data/blog.json")
+                .done(function(data) {
+                    i++;
+                    if (i > (data.length - 1)) {
+                        i = 0;
+                    }
+                    var newCatergories;
+                    if (data[i].categories.length > 1) {
+                        newCatergories = data[i].categories.join(', ');
+                    } else {
+                        newCatergories = data[i].categories;
+                    }
+                    $("#posts").html("<div class='col-sm-6 col-sm-offset-3'><h3>" + data[i].title + " <small>" + data[i].date + "</small></h3><p>Categories: " +
+                            newCatergories + "</p><p>" + data[i].content + "</p></div>");
+                })
+                .fail(function(error) {
+                    console.log(error);
+                });
+    });
+</script>
+</body>
+</html>
