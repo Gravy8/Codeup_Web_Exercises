@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Map</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        #weather_app_container {
+            background: blue;
+        }
+        .weather_box {
+            background: grey;
+        }
+    </style>
+</head>
+<body>
+<div class="container col-sm-6 col-sm-offset-3" id="weather_app_container">
+<h2>Weather Application</h2>
+<h4>San Antonio</h4>
+<div class="row">
+    <div id="today" class="col-sm-4 weather_box text-center"></div>
+    <div id="tomorrow" class="col-sm-4 weather_box text-center"></div>
+    <div id="day_after" class="col-sm-4 weather_box text-center"></div>
+</div>
+
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+        APPID: "8697a27bd465e2134b0bed1884b1d3a0",
+        q:     "San Antonio, TX",
+        units: "imperial"
+    })
+            .done(function(data) {
+                console.log(data);
+                $("#today").append("<p>" + parseInt(data.list[0].temp.max) + "&#176/" + parseInt(data.list[0].temp.min) + "&#176</p>" +
+                    "<p>Clouds: " + data.list[0].weather[0].description + "</p>" +
+                    "<p>Humidity: " + data.list[0].humidity + "</p>" +
+                    "<p>Wind: " + parseInt(data.list[0].speed) + "</p>" +
+                    "<p>Pressure: " + data.list[0].pressure + "</p>");
+                $("#tomorrow").append("<p>" + parseInt(data.list[1].temp.max) + "&#176/" + parseInt(data.list[1].temp.min) + "&#176</p>" +
+                        "<p>Clouds: " + data.list[1].weather[0].description + "</p>" +
+                        "<p>Humidity: " + data.list[1].humidity + "</p>" +
+                        "<p>Wind: " + parseInt(data.list[1].speed) + "</p>" +
+                        "<p>Pressure: " + data.list[1].pressure + "</p>");
+                $("#day_after").append("<p>" + parseInt(data.list[2].temp.max) + "&#176/" + parseInt(data.list[2].temp.min) + "&#176</p>" +
+                        "<p>Clouds: " + data.list[2].weather[0].description + "</p>" +
+                        "<p>Humidity: " + data.list[2].humidity + "</p>" +
+                        "<p>Wind: " + parseInt(data.list[2].speed) + "</p>" +
+                        "<p>Pressure: " + data.list[2].pressure + "</p>");
+            });
+</script>
+</body>
+</html>
