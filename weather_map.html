@@ -6,18 +6,28 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <style>
         #weather_app_container {
-            background: blue;
+            background: #64d8ff;
         }
         .weather_box {
-            background: grey;
+            background: #fbdfff;
+        }
+        .temp {
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
+        .rowOfWeather {
+            padding: 5px;
+        }
+        .weather_box {
+            border: 1px solid #64d8ff;
         }
     </style>
 </head>
 <body>
 <div class="container col-sm-6 col-sm-offset-3" id="weather_app_container">
 <h2>Weather Application</h2>
-<h4>San Antonio</h4>
-<div class="row">
+<h4 id="city"></h4>
+<div class="row rowOfWeather">
     <div id="today" class="col-sm-4 weather_box text-center"></div>
     <div id="tomorrow" class="col-sm-4 weather_box text-center"></div>
     <div id="day_after" class="col-sm-4 weather_box text-center"></div>
@@ -33,17 +43,21 @@
     })
             .done(function(data) {
                 console.log(data);
-                $("#today").append("<p>" + parseInt(data.list[0].temp.max) + "&#176/" + parseInt(data.list[0].temp.min) + "&#176</p>" +
+                $("#city").html(data.city.name);
+                $("#today").append("<p class='temp'>" + parseInt(data.list[0].temp.max) + "&#176/" + parseInt(data.list[0].temp.min) + "&#176</p>" +
+                    "<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png'>" +
                     "<p>Clouds: " + data.list[0].weather[0].description + "</p>" +
                     "<p>Humidity: " + data.list[0].humidity + "</p>" +
                     "<p>Wind: " + parseInt(data.list[0].speed) + "</p>" +
                     "<p>Pressure: " + data.list[0].pressure + "</p>");
-                $("#tomorrow").append("<p>" + parseInt(data.list[1].temp.max) + "&#176/" + parseInt(data.list[1].temp.min) + "&#176</p>" +
+                $("#tomorrow").append("<p class='temp'>" + parseInt(data.list[1].temp.max) + "&#176/" + parseInt(data.list[1].temp.min) + "&#176</p>" +
+                        "<img src='http://openweathermap.org/img/w/" + data.list[1].weather[0].icon + ".png'>" +
                         "<p>Clouds: " + data.list[1].weather[0].description + "</p>" +
                         "<p>Humidity: " + data.list[1].humidity + "</p>" +
                         "<p>Wind: " + parseInt(data.list[1].speed) + "</p>" +
                         "<p>Pressure: " + data.list[1].pressure + "</p>");
-                $("#day_after").append("<p>" + parseInt(data.list[2].temp.max) + "&#176/" + parseInt(data.list[2].temp.min) + "&#176</p>" +
+                $("#day_after").append("<p class='temp'>" + parseInt(data.list[2].temp.max) + "&#176/" + parseInt(data.list[2].temp.min) + "&#176</p>" +
+                        "<img src='http://openweathermap.org/img/w/" + data.list[2].weather[0].icon + ".png'>" +
                         "<p>Clouds: " + data.list[2].weather[0].description + "</p>" +
                         "<p>Humidity: " + data.list[2].humidity + "</p>" +
                         "<p>Wind: " + parseInt(data.list[2].speed) + "</p>" +
